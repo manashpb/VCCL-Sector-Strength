@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sector Strength · VCCL</title>
+    <link rel="stylesheet" href="/sectors/style.css" />
+    <script defer src="/sectors/plotly.min.js"></script>
+    <script type="module" src="/sectors/app.mjs"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <a href="/" class="back">← VCCL workspace</a>
+          <h1>Sector Strength</h1>
+          <p>See which sectors are leading your benchmark.</p>
+        </div>
+        <div class="update">
+          <button id="update">Update data</button>
+          <div id="freshness">Loading cached history…</div>
+        </div>
+      </header>
+      <p id="coverage"></p>
+      <div id="status" role="status" aria-live="polite"></div>
+      <div id="error" role="alert" hidden></div>
+      <section>
+        <div class="section-head">
+          <label
+            >Benchmark index<select id="benchmark" disabled>
+              <option>Nifty 50</option>
+            </select></label
+          ><span class="tag">Daily OHLC · NSE India</span>
+        </div>
+        <div id="candles" class="chart candle">
+          <div class="empty">
+            Click Update data to load the past year of official NSE history.
+          </div>
+        </div>
+        <p id="ohlc-note"></p>
+      </section>
+      <section class="reference">
+        <div>
+          <label
+            >Compare from<input type="date" id="reference" disabled
+          /></label>
+          <p id="reference-note">
+            Returns are measured from the reference session’s closing price.
+          </p>
+        </div>
+        <div class="return-card">
+          <span id="benchmark-name">Benchmark return</span
+          ><strong id="return">—</strong
+          ><small id="period">Choose a reference date</small>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <h2>Sector performance</h2>
+            <p id="breadth">Cumulative price returns from the reference date</p>
+          </div>
+          <span class="tag">Green = above benchmark · Red = below</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Sector</th>
+                <th scope="col">Cumulative return %</th>
+                <th scope="col">vs benchmark (pp)</th>
+              </tr>
+            </thead>
+            <tbody id="summary"></tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <h2>Cumulative returns comparison</h2>
+            <p>
+              Click a legend entry to toggle it; double-click to isolate. Drag
+              to zoom, double-click the chart to reset.
+            </p>
+          </div>
+          <button id="show-all">Show all sectors</button>
+        </div>
+        <div id="comparison" class="chart comparison"></div>
+      </section>
+      <footer>
+        Source:
+        <a
+          href="https://www.nseindia.com/all-reports"
+          target="_blank"
+          rel="noreferrer"
+          >NSE India official daily index archives</a
+        >. Price return = (latest close ÷ reference close − 1) × 100. Dividends
+        are excluded. One year of history; unavailable dates and incomplete
+        sector histories are identified.
+      </footer>
+    </main>
+  </body>
+</html>

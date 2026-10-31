@@ -1,0 +1,16 @@
+{
+  "name": "vccl-sector-strength",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "NSE sector index performance comparison for the VCCL workspace",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "check": "node --check server.mjs && node --check src/store.mjs && node --check src/routes.mjs && node --check public/app.mjs && node --check public/analytics.mjs && node --check scripts/update-sectors.mjs && node --check ecosystem.config.cjs",
+    "test": "node --test tests/*.test.mjs",
+    "data:update": "node scripts/update-sectors.mjs"
+  }
+}
