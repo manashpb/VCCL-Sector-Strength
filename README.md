@@ -113,3 +113,5 @@ records, aligned returns, ranking, missing histories and zero/negative returns.
 A local headless Chrome check also exercised benchmark changes, the reference
 marker/date adjustment, legend toggles and restore, and desktop/mobile layout.
 
+
+See [deployment record](deploy/DEPLOYED.md) for the VCCL installation and transferred cache.
